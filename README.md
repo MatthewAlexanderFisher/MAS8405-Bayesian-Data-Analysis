@@ -4,9 +4,9 @@ This is the GitHub repo for the Thursday seminar materials for the course [Bayes
 
 In total there are three Thursday seminars, each covering and extending content covered in the corresponding week, with a particular focus on practical application using ``R``. For each seminar, there is a corresponding folder in this repo with all the materials used in that seminar. This includes a PDF of the slides used, the Jupyter notebook files and corresponding ``R`` scripts. Please feel free to borrow and rework any of the featured code in future work.
 
-### Caveats
-
 In the seminars, I will be presenting using a Jupyter notebook using an ``R`` kernel with Visual Studio Code. Reading and operating a Jupyter notebook offline will require installation of ``Python`` and executing cells with an ``R`` kernel requires more setup. However, you should be able to at least read the notebooks via GitHub on your browser. Just in case, I have also provided corresponding ``R`` files with the raw ``R`` code included. You should be able to execute these ``R`` files on your computer offline, using an installation of ``R`` - perhaps with an IDE like [RStudio](https://www.rstudio.com/products/rstudio/). For ease of use, I would recommend using RStudio with R notebooks over something like Visual Studio Code with Jupyter notebooks. 
+
+Email: matthew.fisher@newcastle.ac.uk
 
 ### Links and Further readings:
 
