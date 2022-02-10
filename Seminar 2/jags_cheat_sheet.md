@@ -625,10 +625,10 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
 - $(Y_1, \ldots, Y_N) | {\bf X}, \sigma^2, \ell, \delta\sim \text{MultivariateNormal}(\mu, \Sigma)$, where $$ \mu = \left(a + bx_1, a + bx_2, \ldots, a+bx_N \right)^\top $$ and
   $$\Sigma = \begin{pmatrix} k(x_1, x_1) + \delta^2 & k(x_1, x_2) & \ldots & k(x_1, x_N) \\ k(x_2, x_1) & k(x_2, x_2)+ \delta^2 & \ldots & k(x_2, x_N) \\ \vdots  & \vdots & \ddots & \vdots \\ k(x_N, x_1) & k(x_N, x_2) & \ldots & k(x_N, x_N)+ \delta^2 \\\end{pmatrix} $$
   and $k(x_i, x_j) = \sigma^2 \exp\left(-\frac{|x_i - x_j|^2}{2\ell}\right)$ is the squared-exponential kernel.
-- Prior for $a$ and $b$: $a\sim \mathcal{N}(0, 1/10)$ and $b\sim \mathcal{N}(0, 1/10)$.
-- Prior for $\sigma^2$: $\sigma^2 \sim \text{Gamma}(\alpha, \beta) $.
-- Prior for $\ell$:  $\ell\sim \text{LogNormal}(\mu_0, \tau_0)$.
-- Prior for $\delta$: $\delta\sim\text{Exp}(\lambda)$.
+- Prior for $a$ and $b$: $a\sim \mathcal{N}(0, 10^{-6})$ and $b\sim \mathcal{N}(0, 10^{-6})$.
+- Prior for $\sigma^2$: $\sigma^2 \sim \text{Exp}(0.1) $.
+- Prior for $\ell$:  $\ell\sim \text{Exp}(0.2)$.
+- Prior for $\delta$: $\delta\sim\text{Exp}(0.2)$.
 
 #### ``JAGS`` Code:
 
@@ -640,7 +640,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
             for (i in 1:N) {
                 mean_vec[i] <- a + b * X[i] # Zero-Mean
                 # diagonal terms:
-                cov_mat[i, i] <- amplitude + delta
+                cov_mat[i, i] <- amplitude + delta ** 2
                 # off-diagonal terms:
                 for (j in (i+1):N){
                     cov_mat[i, j] <- amplitude * exp(-0.5 * (X[i] - X[j]) ** 2 / lengthscale)
@@ -649,18 +649,11 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
             }
 
             # Priors:
-            a ~ dnorm(0, 1/10)
-            b ~ dnorm(0, 1/10)
-            amplitude ~ dgamma(alpha, beta)
-            length_scale ~ dlnorm(mu_0, tau_0)
-            delta ~ dexp(lambda)
-
-            # Defining Prior Hyperparameters:
-            alpha <- 1
-            beta <- 1
-            mu_0 <- 1
-            tau_0 <- 1/10
-            lambda <- 4
+            a ~ dnorm(0, 1E-6)
+            b ~ dnorm(0, 1E-6)
+            amplitude ~ dexp(0.1)
+            lengthscale ~ dexp(0.2)
+            delta ~ dexp(0.2)
         }
         "
 
