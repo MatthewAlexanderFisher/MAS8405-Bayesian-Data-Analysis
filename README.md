@@ -4,14 +4,14 @@ This is the GitHub repo for the Thursday seminar materials for the course [Bayes
 
 In total there are three Thursday seminars, each covering and extending content covered in the corresponding week, with a particular focus on practical application using ``R``. For each seminar, there is a corresponding folder in this repo with all the materials used in that seminar. This includes a PDF of the slides used, the Jupyter notebook files and corresponding ``R`` scripts. Please feel free to borrow and rework any of the featured code in future work.
 
-In the seminars, I will be presenting using a Jupyter notebook using an ``R`` kernel with Visual Studio Code. Reading and operating a Jupyter notebook offline will require installation of ``Python`` and executing cells with an ``R`` kernel requires more setup. However, you should be able to at least read the notebooks via GitHub on your browser. Just in case, I have also provided corresponding ``R`` files with the raw ``R`` code included. You should be able to execute these ``R`` files on your computer offline, using an installation of ``R`` - perhaps with an IDE like [RStudio](https://www.rstudio.com/products/rstudio/). For ease of use, I would recommend using RStudio with R notebooks over something like Visual Studio Code with Jupyter notebooks. 
+In the seminars, I will be presenting using a Jupyter notebook using an ``R`` kernel with Visual Studio Code. Reading and operating a Jupyter notebook offline will require installation of ``Python`` and executing cells with an ``R`` kernel requires more setup. However, you should be able to at least read the notebooks via GitHub on your browser. 
 
 Email: matthew.fisher@newcastle.ac.uk
 
 ### Links and Further readings:
 
 The following is a list of useful links:
-
+- [Prior Specification Recommendation](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations): An assortment of prior recommendations for different models. It is a bit of a mess, but there is likely some useful advice there if you are struggling in specifying priors. 
 - [Advanced Statistical Computing](https://bookdown.org/rdpeng/advstatcomp/): An online book written with ``R`` focussing on statistical computation. The relevant material here is the section of Markov Chain Monte Carlo. Other sections demonstrate other computational techniques.
 - [Statistical Computing for Biologists](https://bio723-class.github.io/Bio723-book/index.html): An online ``R`` course intended for graduate level biologists. The course is really just statistical computing. The relevant material are the introduction to ``ggplot`` and ``dplyr``.
 - [JAGS User Manual](https://people.stat.sc.edu/hansont/stat740/jags_user_manual.pdf): If you really want to know all the inner workings of JAGS, the user manual covers pretty much everything. 
