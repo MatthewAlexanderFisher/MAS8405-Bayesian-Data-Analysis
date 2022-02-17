@@ -582,7 +582,7 @@ This is just the last model with the mean $\mu$ replaced by a linear mean $\mu +
 In the following $\alpha = (\alpha_1, \alpha_2)^\top$.
 
 - Probability Model: $$Y_t | y_{t-1}, y_{t-2}, \mu, 
-  \alpha, \tau \sim \mathcal{N}(\mu + mt + \alpha_1(y_{t-1}-\mu - mt) + \alpha_2(y_{t-2}-\mu -mt), \tau).$$
+  \alpha, \tau \sim \mathcal{N}(\mu + mt + \alpha_1(y_{t-1}-\mu - m(t-1)) + \alpha_2(y_{t-2}-\mu -m(t-2)), \tau).$$
 - Prior for $\mu$ and $m$: $\mu \sim \mathcal{N}(0, 10^{-4})$ and $m \sim \mathcal{N}(0, 10^{-4})$.
 - Prior for $\alpha$: $\alpha_1 \sim \mathcal{N}(0, 10^{-4})$ and $\alpha_2 \sim \mathcal{N}(0, 10^{-4})$.
 - Prior for $\tau:$ $\tau\sim \text{Gamma}(10^{-3},10^{-3})$.
