@@ -739,7 +739,7 @@ We only use ``JAGS`` to perform Bayesian inference on the mean parameters (if gi
 The following assumes a squared-exponential kernel with a lengthscale parameter $\ell > 0$ and amplitude parameter $\sigma^2 > 0$. The ${\bf X} = (x_1, \ldots, x_n)^\top$ is the vector of all predictor values.
 
 - $(Y_1, \ldots, Y_N) | {\bf X}, \sigma^2, \ell, \delta\sim \text{MultivariateNormal}({\bf 0}, \Sigma)$, where $$\Sigma = \begin{pmatrix} k(x_1, x_1) + \delta^2 & k(x_1, x_2) & \ldots & k(x_1, x_N) \\ k(x_2, x_1) & k(x_2, x_2)+ \delta^2 & \ldots & k(x_2, x_N) \\ \vdots  & \vdots & \ddots & \vdots \\ k(x_N, x_1) & k(x_N, x_2) & \ldots & k(x_N, x_N)+ \delta^2 \\\end{pmatrix} $$
-  and $k(x_i, x_j) = \sigma^2 \exp\left(-\frac{|x_i - x_j|^2}{2\ell}\right)$ is the squared-exponential kernel.
+  and $k(x_i, x_j) = \sigma^2 \exp\left(-\frac{1}{2}\left|\frac{x_i - x_j}{\ell}\right|^2\right)$ is the squared-exponential kernel.
 - Prior for $\sigma^2$: $\sigma^2 \sim \text{Exp}(0.1) $.
 - Prior for $\ell$:  $\ell\sim \text{Exp}(0.2)$.
 - Prior for $\delta$: $\delta\sim\text{Exp}(0.2)$.
@@ -809,7 +809,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
 
 - $(Y_1, \ldots, Y_N) | {\bf X}, \sigma^2, \ell, \delta\sim \text{MultivariateNormal}(\mu, \Sigma)$, where $$ \mu = \left(a + bx_1, a + bx_2, \ldots, a+bx_N \right)^\top $$ and
   $$\Sigma = \begin{pmatrix} k(x_1, x_1) + \delta^2 & k(x_1, x_2) & \ldots & k(x_1, x_N) \\ k(x_2, x_1) & k(x_2, x_2)+ \delta^2 & \ldots & k(x_2, x_N) \\ \vdots  & \vdots & \ddots & \vdots \\ k(x_N, x_1) & k(x_N, x_2) & \ldots & k(x_N, x_N)+ \delta^2 \\\end{pmatrix} $$
-  and $k(x_i, x_j) = \sigma^2 \exp\left(-\frac{|x_i - x_j|^2}{2\ell}\right)$ is the squared-exponential kernel.
+  and $k(x_i, x_j) = \sigma^2 \exp\left(-\frac{1}{2}\left|\frac{x_i - x_j}{\ell}\right|^2\right)$ is the squared-exponential kernel.
 - Prior for $a$ and $b$: $a\sim \mathcal{N}(0, 10^{-6})$ and $b\sim \mathcal{N}(0, 10^{-6})$.
 - Prior for $\sigma^2$: $\sigma^2 \sim \text{Exp}(0.1) $.
 - Prior for $\ell$:  $\ell\sim \text{Exp}(0.2)$.
