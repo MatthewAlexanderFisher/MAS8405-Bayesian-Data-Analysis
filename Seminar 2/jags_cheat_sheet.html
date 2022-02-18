@@ -6,9 +6,9 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
       
       
-      
       <link rel="icon" href="https://github.com/MatthewAlexanderFisher/MAS8405-Bayesian-Data-Analysis/blob/main/Seminar%202/figures/favicon.ico?raw=true">
 
+      
       
       
       
@@ -995,7 +995,7 @@ and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
 <pre class="language-text">model_string &lt;- &quot;
     model{
         # Probability Model (N is the number of data):
-        Y ~ dmvnorm.vcov(mean_vec, cov_mat)
+        Y ~ dmnorm.vcov(mean_vec, cov_mat)
 
         for (i in 1:N) {
             mean_vec[i] &lt;- 0 # Zero-Mean
@@ -1003,7 +1003,7 @@ and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
             cov_mat[i, i] &lt;- amplitude + delta ** 2
             # off-diagonal terms:
             for (j in (i+1):N){
-                cov_mat[i, j] &lt;- amplitude * exp(-0.5 * (X[i] - X[j]) ** 2 / lengthscale)
+                cov_mat[i, j] &lt;- amplitude * exp(-0.5 * ((X[i] - X[j]) / lengthscale) ** 2)
                 cov_mat[j, i] &lt;- cov_mat[i, j]
             }
         }
@@ -1057,7 +1057,7 @@ and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
 <pre class="language-text">model_string &lt;- &quot;
     model{
         # Probability Model (N is the number of data):
-        Y ~ dmvnorm.vcov(mean_vec, cov_mat)
+        Y ~ dmnorm.vcov(mean_vec, cov_mat)
 
         for (i in 1:N) {
             mean_vec[i] &lt;- a + b * X[i] # Linear-Mean
@@ -1065,7 +1065,7 @@ and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
             cov_mat[i, i] &lt;- amplitude + delta ** 2
             # off-diagonal terms:
             for (j in (i+1):N){
-                cov_mat[i, j] &lt;- amplitude * exp(-0.5 * (X[i] - X[j]) ** 2 / lengthscale)
+                cov_mat[i, j] &lt;- amplitude * exp(-0.5 * ((X[i] - X[j]) / lengthscale) ** 2)
                 cov_mat[j, i] &lt;- cov_mat[i, j]
             }
         }
