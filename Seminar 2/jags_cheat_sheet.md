@@ -749,7 +749,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
     model_string <- "
         model{
             # Probability Model (N is the number of data):
-            Y ~ dmvnorm.vcov(mean_vec, cov_mat)
+            Y ~ dmnorm.vcov(mean_vec, cov_mat)
 
             for (i in 1:N) {
                 mean_vec[i] <- 0 # Zero-Mean
@@ -757,7 +757,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
                 cov_mat[i, i] <- amplitude + delta ** 2
                 # off-diagonal terms:
                 for (j in (i+1):N){
-                    cov_mat[i, j] <- amplitude * exp(-0.5 * (X[i] - X[j]) ** 2 / lengthscale)
+                    cov_mat[i, j] <- amplitude * exp(-0.5 * ((X[i] - X[j]) / lengthscale) ** 2)
                     cov_mat[j, i] <- cov_mat[i, j]
                 }
             }
@@ -820,7 +820,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
     model_string <- "
         model{
             # Probability Model (N is the number of data):
-            Y ~ dmvnorm.vcov(mean_vec, cov_mat)
+            Y ~ dmnorm.vcov(mean_vec, cov_mat)
 
             for (i in 1:N) {
                 mean_vec[i] <- a + b * X[i] # Linear-Mean
@@ -828,7 +828,7 @@ The following assumes a squared-exponential kernel with a lengthscale parameter 
                 cov_mat[i, i] <- amplitude + delta ** 2
                 # off-diagonal terms:
                 for (j in (i+1):N){
-                    cov_mat[i, j] <- amplitude * exp(-0.5 * (X[i] - X[j]) ** 2 / lengthscale)
+                    cov_mat[i, j] <- amplitude * exp(-0.5 * ((X[i] - X[j]) / lengthscale) ** 2)
                     cov_mat[j, i] <- cov_mat[i, j]
                 }
             }
